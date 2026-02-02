@@ -14,7 +14,8 @@ from ..utils.validators import (
     validate_date_range,
     validate_top_n,
     validate_mode,
-    validate_date_query
+    validate_date_query,
+    normalize_date_range
 )
 from ..utils.errors import MCPError
 
@@ -67,10 +68,14 @@ class DataQueryTools:
             )
 
             return {
-                "news": news_list,
-                "total": len(news_list),
-                "platforms": platforms,
-                "success": True
+                "success": True,
+                "summary": {
+                    "description": "最新一批爬取的新闻数据",
+                    "total": len(news_list),
+                    "returned": len(news_list),
+                    "platforms": platforms or "全部平台"
+                },
+                "data": news_list
             }
 
         except MCPError as e:
@@ -263,6 +268,10 @@ class DataQueryTools:
             # 参数验证 - 默认今天
             if date_range is None:
                 date_range = "今天"
+
+            # 规范化 date_range（处理 JSON 字符串序列化问题）
+            date_range = normalize_date_range(date_range)
+
             # 处理 date_range：支持字符串或对象
             if isinstance(date_range, dict):
                 # 范围对象，取 start 日期
@@ -282,12 +291,16 @@ class DataQueryTools:
             )
 
             return {
-                "news": news_list,
-                "total": len(news_list),
-                "date": target_date.strftime("%Y-%m-%d"),
-                "date_range": date_range,
-                "platforms": platforms,
-                "success": True
+                "success": True,
+                "summary": {
+                    "description": f"按日期查询的新闻（{target_date.strftime('%Y-%m-%d')}）",
+                    "total": len(news_list),
+                    "returned": len(news_list),
+                    "date": target_date.strftime("%Y-%m-%d"),
+                    "date_range": date_range,
+                    "platforms": platforms or "全部平台"
+                },
+                "data": news_list
             }
 
         except MCPError as e:
@@ -311,14 +324,16 @@ class DataQueryTools:
     def get_latest_rss(
         self,
         feeds: Optional[List[str]] = None,
+        days: int = 1,
         limit: Optional[int] = None,
         include_summary: bool = False
     ) -> Dict:
         """
-        获取最新的 RSS 数据
+        获取最新的 RSS 数据（支持多日查询）
 
         Args:
             feeds: RSS 源 ID 列表，如 ['hacker-news', '36kr']
+            days: 获取最近 N 天的数据，默认 1（仅今天），最大 30 天
             limit: 返回条数限制，默认50
             include_summary: 是否包含摘要，默认False（节省token）
 
@@ -330,15 +345,21 @@ class DataQueryTools:
 
             rss_list = self.data_service.get_latest_rss(
                 feeds=feeds,
+                days=days,
                 limit=limit,
                 include_summary=include_summary
             )
 
             return {
-                "rss": rss_list,
-                "total": len(rss_list),
-                "feeds": feeds,
-                "success": True
+                "success": True,
+                "summary": {
+                    "description": f"最近 {days} 天的 RSS 订阅数据" if days > 1 else "最新的 RSS 订阅数据",
+                    "total": len(rss_list),
+                    "returned": len(rss_list),
+                    "days": days,
+                    "feeds": feeds or "全部订阅源"
+                },
+                "data": rss_list
             }
 
         except MCPError as e:
@@ -392,12 +413,16 @@ class DataQueryTools:
             )
 
             return {
-                "rss": rss_list,
-                "total": len(rss_list),
-                "keyword": keyword,
-                "feeds": feeds,
-                "days": days,
-                "success": True
+                "success": True,
+                "summary": {
+                    "description": f"RSS 搜索结果（关键词: {keyword}）",
+                    "total": len(rss_list),
+                    "returned": len(rss_list),
+                    "keyword": keyword,
+                    "feeds": feeds or "全部订阅源",
+                    "days": days
+                },
+                "data": rss_list
             }
 
         except MCPError as e:

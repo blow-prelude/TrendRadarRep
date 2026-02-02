@@ -275,28 +275,33 @@ def show_config():
     print("⚙️ 当前配置:")
 
     env_vars = [
+        # 运行配置
         "CRON_SCHEDULE",
         "RUN_MODE",
         "IMMEDIATE_RUN",
+        # 通知渠道
         "FEISHU_WEBHOOK_URL",
         "DINGTALK_WEBHOOK_URL",
         "WEWORK_WEBHOOK_URL",
+        "WEWORK_MSG_TYPE",
         "TELEGRAM_BOT_TOKEN",
         "TELEGRAM_CHAT_ID",
-        "CONFIG_PATH",
-        "FREQUENCY_WORDS_PATH",
-        # 存储配置
-        "STORAGE_BACKEND",
-        "LOCAL_RETENTION_DAYS",
-        "REMOTE_RETENTION_DAYS",
-        "STORAGE_TXT_ENABLED",
-        "STORAGE_HTML_ENABLED",
+        "NTFY_SERVER_URL",
+        "NTFY_TOPIC",
+        "NTFY_TOKEN",
+        "BARK_URL",
+        "SLACK_WEBHOOK_URL",
+        # AI 分析配置
+        "AI_ANALYSIS_ENABLED",
+        "AI_API_KEY",
+        "AI_PROVIDER",
+        "AI_MODEL",
+        "AI_BASE_URL",
+        # 远程存储配置
         "S3_BUCKET_NAME",
         "S3_ACCESS_KEY_ID",
         "S3_ENDPOINT_URL",
         "S3_REGION",
-        "PULL_ENABLED",
-        "PULL_DAYS",
     ]
 
     for var in env_vars:

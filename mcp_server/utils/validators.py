@@ -167,8 +167,10 @@ def get_supported_platforms() -> List[str]:
 
         with open(config_path, 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)
-            platforms = config.get('platforms', [])
-            return [p['id'] for p in platforms if 'id' in p]
+            platforms_config = config.get('platforms', {})
+            # 处理嵌套结构：{enabled: bool, sources: [...]}
+            sources = platforms_config.get('sources', [])
+            return [p['id'] for p in sources if 'id' in p]
     except Exception as e:
         # 降级方案：返回空列表，允许所有平台
         print(f"警告：无法加载平台配置 ({config_path}): {e}")
@@ -293,6 +295,53 @@ def validate_date(date_str: str) -> datetime:
             f"日期格式错误: {date_str}",
             suggestion="请使用 YYYY-MM-DD 格式，例如: 2025-10-11"
         )
+
+
+def normalize_date_range(date_range: Optional[Union[dict, str]]) -> Optional[Union[dict, str]]:
+    """
+    规范化 date_range 参数
+
+    某些 MCP 客户端（特别是 HTTP 方式）会将 JSON 对象序列化为字符串传入。
+    此函数尝试将 JSON 字符串解析为 dict，如果不是 JSON 格式则保持原样。
+
+    Args:
+        date_range: 日期范围，可能是:
+            - dict: {"start": "2025-01-01", "end": "2025-01-07"}
+            - JSON 字符串: '{"start": "2025-01-01", "end": "2025-01-07"}'
+            - 普通字符串: "今天", "昨天", "2025-01-01"
+            - None
+
+    Returns:
+        规范化后的 date_range（dict 或普通字符串）
+
+    Examples:
+        >>> normalize_date_range('{"start":"2025-01-01","end":"2025-01-07"}')
+        {"start": "2025-01-01", "end": "2025-01-07"}
+        >>> normalize_date_range("今天")
+        "今天"
+        >>> normalize_date_range({"start": "2025-01-01", "end": "2025-01-07"})
+        {"start": "2025-01-01", "end": "2025-01-07"}
+    """
+    if date_range is None:
+        return None
+
+    # 如果已经是 dict，直接返回
+    if isinstance(date_range, dict):
+        return date_range
+
+    # 如果是字符串，尝试解析为 JSON
+    if isinstance(date_range, str):
+        # 检查是否看起来像 JSON 对象
+        stripped = date_range.strip()
+        if stripped.startswith('{') and stripped.endswith('}'):
+            try:
+                parsed = json.loads(stripped)
+                if isinstance(parsed, dict):
+                    return parsed
+            except json.JSONDecodeError:
+                pass  # 解析失败，当作普通字符串处理
+
+    return date_range
 
 
 def validate_date_range(date_range: Optional[Union[dict, str]]) -> Optional[tuple]:
