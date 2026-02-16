@@ -153,7 +153,6 @@
 #                         企业与品牌
 # ═══════════════════════════════════════════════════════════════
 
-
 [华为]
 海思
 昇腾
@@ -162,7 +161,13 @@
 !孟晚舟
 @2
 
-/大疆|灵眸|如影|\bDJI\b|\bRoboMaster\b|\bMavic\b|\bZenmuse\b/ => 大疆
+[大疆]
+大疆
+DJI
+灵眸
+如影
+Mavic
+Zenmuse
 
 [国内互联网大厂]
 字节跳动
@@ -174,13 +179,22 @@ Tencent
 
 /特斯拉|马斯克|\bTesla\b|\bElon Musk\b|\bCybertruck\b|\bModel 3\b|\bModel Y\b|\bModel S\b|\bModel X\b|\bFSD\b/ => 特斯拉
 
+[微软]
+微软
+Microsoft
+Windows
+Copilot
+@4
 
-/微软|\bMicrosoft\b|\bWindows\b|\bAzure\b|\bSatya Nadella\b|\bCopilot\b/ => 微软
-/谷歌|安卓|油管|\bGoogle\b|\bAlphabet\b|\bAndroid\b|\bChrome\b|\bYouTube\b|\bWaymo\b/ => 谷歌
-
-
-
-
+[谷歌]
+谷歌
+Google
+Alphabet
+Android
+Chrome
+油管
+YouTube
+@6
 
 # ═══════════════════════════════════════════════════════════════
 #                         科技领域
@@ -198,7 +212,7 @@ AMD
 NVIDIA
 CUDA
 Inter
-@2
+@4
 
 [国产机器人]
 宇树
