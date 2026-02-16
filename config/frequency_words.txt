@@ -170,7 +170,7 @@
 抖音
 腾讯
 鹅厂
-\bTencent\b
+Tencent
 
 /特斯拉|马斯克|\bTesla\b|\bElon Musk\b|\bCybertruck\b|\bModel 3\b|\bModel Y\b|\bModel S\b|\bModel X\b|\bFSD\b/ => 特斯拉
 
@@ -190,24 +190,24 @@
 /(?<![a-zA-Z])ai(?![a-zA-Z])/
 人工智能
 agent
+@8
 
 [芯片]
-\bAMD\b
+AMD
 英伟达
-\bNVIDIA\b
-\bCUDA\b
-/\bInter\b/i
-英特尔
+NVIDIA
+CUDA
+Inter
 @2
 
 [国产机器人]
 宇树
-\bUnitree\b
-\bAgiBot\b
+Unitree
+AgiBot
 智元
 灵犀
 众擎
-/\bEngineAI\b/i
+EngineAI
 
 [自动驾驶]
 自动驾驶
@@ -221,18 +221,19 @@ minimax
 glm
 豆包
 千问
-/\bkimi\b/i
-\bDeepSeek\b
+kimi
+DeepSeek
 
 [AI三巨头]
-\bOpenAI\b
-\bChatGPT\b
-\bSora\b
-\bAnthropic\b
-\bClaude\b
-\bGemini\b
-\bDeepMind\b
+OpenAI
+ChatGPT
+Sora
+Anthropic
+Claude
+Gemini
+DeepMind
 antigravity
+@5
 
 [机器人]
 机器人
