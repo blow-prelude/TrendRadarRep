@@ -122,11 +122,41 @@ rss:
   # - 不配置：使用全局 freshness_filter.max_age_days（默认 3 天）
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
-  # feeds:
-  # - id: "hacker-news"
-  #   name: "Hacker News"
-  #   url: "https://hnrss.org/frontpage"
-  # max_age_days: 1               # 示例：只推送1天内的文章
+  feeds:
+    - id: "nature"
+      name: "Nature"
+      url: "http://www.nature.com/nature/current_issue/rss"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "product-hunt"
+      name: "Product Hunt"
+      url: "http://www.producthunt.com/feed"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "the-pragmatic-engineer"
+      name: "The Pragmatic Engineer"
+      url: "https://blog.pragmaticengineer.com/rss/"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "huffpost-world-news"
+      name: "huffpost 世界新闻"
+      url: "https://www.huffpost.com/section/world-news/feed"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "cnbc"
+      name: "US Top News and Analysis"
+      url: "https://www.cnbc.com/rss-feeds/"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "hacker-news"
+      name: "Hacker News"
+      url: "https://hnrss.org/frontpage"
+      max_age_days: 1 # 示例：只推送1天内的文章
 
   # - id: "ruanyifeng"
   #   name: "阮一峰的网络日志"
@@ -270,7 +300,7 @@ notification:
     enabled: true # 是否启用推送时间窗口控制
     start: "18:00" # 开始时间（北京时间）
     end: "21:00" # 结束时间（北京时间）
-    once_per_day: false # true=窗口内只推送一次，false=窗口内每次执行都推送
+    once_per_day: true # true=窗口内只推送一次，false=窗口内每次执行都推送
 
   # 推送渠道配置
   channels:
@@ -379,7 +409,7 @@ ai:
   api_key: "" # API Key（建议使用环境变量 AI_API_KEY）
 
   api_base:
-    "" # 自定义 API 端点（可选，大多数情况留空）
+    "https://api.deepseek.com" # 自定义 API 端点（可选，大多数情况留空）
     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
     #
     # 💡 超级重要：连接任意兼容 OpenAI 协议的模型商
