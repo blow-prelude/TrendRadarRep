@@ -180,10 +180,10 @@ rss:
       url: "https://hnrss.org/frontpage"
       max_age_days: 1 # 示例：只推送1天内的文章
 
-  # - id: "ruanyifeng"
-  #   name: "阮一峰的网络日志"
-  #   url: "http://www.ruanyifeng.com/blog/atom.xml"
-  # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
+    - id: "ruanyifeng"
+      name: "阮一峰的网络日志"
+      url: "http://www.ruanyifeng.com/blog/atom.xml"
+      max_age_days: 7 # 示例：推送7天内的文章（更新较慢的博客）
 
   # - id: "yahoo-finance"
   #   name: "雅虎财经"
@@ -327,7 +327,7 @@ display:
   regions:
     hotlist: true # 热榜区域（关键词匹配 / AI 智能筛选）
     new_items:
-      false # 新增热点区域（含热榜新增 + RSS 新增）
+      true # 新增热点区域（含热榜新增 + RSS 新增）
       # 注：热点词汇统计中的新增标记🆕不受此配置影响
 
     rss:
@@ -382,25 +382,6 @@ display:
 # ===============================================================
 notification:
   enabled: true # 是否启用通知功能
-
-  # 🕐 推送时间窗口控制（可选功能）
-  # 用途：限制推送的时间范围，避免非工作时间打扰
-  # 适用场景：
-  #   • 只想在工作日白天接收推送（如 09:00-18:00）
-  #   • 希望在晚上固定时间收到汇总（如 20:00-22:00）
-  #   • 夜间工作者可配置跨日窗口（如 22:00-02:00）
-  # ⚠️ GitHub Actions 用户注意：
-  #   执行时间不稳定，时间范围建议至少留足 2 小时
-  # 💡 想要精准定时？建议使用 Docker 部署在个人服务器上
-  #
-  # 📌 跨日时间窗口支持：
-  #   • 正常窗口：start < end，如 09:00-21:00（当天 9 点到 21 点）
-  #   • 跨日窗口：start > end，如 22:00-02:00（当天 22 点到次日 2 点）
-  push_window:
-    enabled: true # 是否启用推送时间窗口控制
-    start: "18:00" # 开始时间（北京时间）
-    end: "21:00" # 结束时间（北京时间）
-    once_per_day: true # true=窗口内只推送一次，false=窗口内每次执行都推送
 
   # 推送渠道配置
   channels:
@@ -599,7 +580,7 @@ ai_analysis:
     # GitHub Action 部署默认推送约 20 次（每小时推送一次）， 约 0.1 元/天
     # Docker 部署默认推送 48 次(每半小时推送一次)， 约 0.2 元/天
 
-  include_rss: false # 是否包含 RSS 内容进行分析
+  include_rss: true # 是否包含 RSS 内容进行分析
 
   include_standalone:
     true # 是否将独立展示区数据纳入 AI 分析
