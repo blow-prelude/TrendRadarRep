@@ -38,7 +38,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true # 是否启用调度系统
-  preset: "morning_evening" # 预设模板名称（见上方说明）
+  preset: "night_owl" # 预设模板名称（见上方说明）
 
 # ===============================================================
 # 2. 数据源 - 热榜平台
@@ -145,6 +145,30 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
+    - id: "huffpost-world-news"
+      name: "huffpost 世界新闻"
+      url: "https://www.huffpost.com/section/world-news/feed"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "cnbc"
+      name: "US Top News and Analysis"
+      url: "https://www.cnbc.com/rss-feeds/"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "new on japan"
+      name: "New on Japan 日本新闻"
+      url: “http://www.newsonjapan.com/rss/top.xml”
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "cnn"
+      name: "cnn"
+      url: "http://rss.cnn.com/rss/edition.rss"
+      enabled: true
+      max_age_days: 1 # 示例：只推送1天内的文章
+
     - id: "nature"
       name: "Nature"
       url: "http://www.nature.com/nature/current_issue/rss"
@@ -163,18 +187,6 @@ rss:
       enabled: true
       max_age_days: 1 # 示例：只推送1天内的文章
 
-    - id: "huffpost-world-news"
-      name: "huffpost 世界新闻"
-      url: "https://www.huffpost.com/section/world-news/feed"
-      enabled: true
-      max_age_days: 1 # 示例：只推送1天内的文章
-
-    - id: "cnbc"
-      name: "US Top News and Analysis"
-      url: "https://www.cnbc.com/rss-feeds/"
-      enabled: true
-      max_age_days: 1 # 示例：只推送1天内的文章
-
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
@@ -184,6 +196,21 @@ rss:
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
       max_age_days: 7 # 示例：推送7天内的文章（更新较慢的博客）
+
+    - id: "the verge"
+      name: "The Verge"
+      url: "http://www.theverge.com/rss/full.xml"
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "facebook-code"
+      name: "Facebook Code"
+      url: "https://code.facebook.com/posts/rss"
+      max_age_days: 1 # 示例：只推送1天内的文章
+
+    - id: "science-alert"
+      name: "Science Alert"
+      url: "https://www.sciencealert.com/rss"
+      max_age_days: 1 # 示例：只推送1天内的文章
 
   # - id: "yahoo-finance"
   #   name: "雅虎财经"
@@ -538,7 +565,7 @@ ai:
 # ===============================================================
 ai_analysis:
   enabled:
-    flase # 是否启用 AI 分析（总开关）
+    true # 是否启用 AI 分析（总开关）
     # ⚠️ 开启调度系统后，此项仍为总开关：
     #   false → 永远不分析（无论调度怎么设置）
     #   true  → 由调度的 analyze 字段控制何时分析
