@@ -602,6 +602,13 @@ def load_config(config_path: Optional[str] = None) -> Dict[str, Any]:
     # 存储配置
     config["STORAGE"] = _load_storage_config(config_data)
 
+    # 推送窗口配置（默认禁用）
+    config["PUSH_WINDOW"] = {
+        "ENABLED": True,
+        "TIME_RANGE": {"START": "00:00", "END": "23:59"},
+        "ONCE_PER_DAY": False,
+    }
+
     # Webhook 配置
     config.update(_load_webhook_config(config_data))
 
