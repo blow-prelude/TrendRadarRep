@@ -291,7 +291,7 @@ filter:
 # ===============================================================
 ai_filter:
   batch_size:
-    200 # 每批发送给 AI 的标题数（控制单次 API 调用量）
+    120 # 每批发送给 AI 的标题数（控制单次 API 调用量）
     # 新闻超过此数量时自动分批处理
   batch_interval:
     2 # 分批处理时，每批之间的等待时间（秒）
@@ -593,7 +593,7 @@ ai_analysis:
 
   # 分析内容配置
   max_news_for_analysis:
-    150 # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
+    100 # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
     # 热榜优先占用配额，RSS 使用剩余配额；独立展示区不受此限制
     # 推送消息顶部会显示实际的 AI 分析数供参考
 
@@ -608,11 +608,11 @@ ai_analysis:
   include_rss: true # 是否包含 RSS 内容进行分析
 
   include_standalone:
-    true # 是否将独立展示区数据纳入 AI 分析
+    false # 是否将独立展示区数据纳入 AI 分析
     # 数据源列表来自 display.standalone.platforms / display.standalone.rss_feeds
 
   include_rank_timeline:
-    true # 是否传递完整排名时间线
+    false # 是否传递完整排名时间线
     # false: 使用简化格式（排名范围+时间范围+出现次数）
     # true: 传递完整排名变化轨迹（如 1(09:30)→2(10:00)→0(11:00)）
     # 启用后 AI 能更精确分析热度趋势，但会额外增加 token 消耗（0.5 倍到 1 倍）
@@ -643,7 +643,7 @@ ai_translation:
   scope:
     hotlist: false # 热榜区域
     rss: true # RSS 区域
-    standalone: false # 独立展示区
+    standalone: true # 独立展示区
 
 # ===============================================================
 # 11. 高级设置（一般无需修改）
