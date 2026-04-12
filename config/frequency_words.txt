@@ -168,6 +168,7 @@ DJI
 如影
 Mavic
 Zenmuse
+@3
 
 [国内互联网大厂]
 字节跳动
@@ -184,7 +185,7 @@ Tencent
 Microsoft
 Windows
 Copilot
-@4
+@3
 
 [谷歌]
 谷歌
@@ -194,16 +195,18 @@ Android
 Chrome
 油管
 YouTube
-@6
+@3
 
 # ═══════════════════════════════════════════════════════════════
 #                         科技领域
 # ═══════════════════════════════════════════════════════════════
 
 [AI 相关]
-/(?<![a-zA-Z])ai(?![a-zA-Z])/
-人工智能
 agent
+claw
+openclaw
+picoclaw
+skills
 @8
 
 [芯片]
@@ -222,6 +225,7 @@ AgiBot
 灵犀
 众擎
 EngineAI
+@4
 
 [自动驾驶]
 自动驾驶
@@ -229,25 +233,25 @@ EngineAI
 智驾
 @2
 
-[国产AI]
-qwen
-minimax
-glm
-豆包
-千问
-kimi
-DeepSeek
-
-[AI三巨头]
+[LLM]
+Anthropic
+Claude
 OpenAI
 ChatGPT
 Sora
-Anthropic
-Claude
 Gemini
 DeepMind
 antigravity
-@5
+glm
+qwen
+千问
+minimax
+豆包
+kimi
+DeepSeek
+@10
+
+
 
 [机器人]
 机器人
@@ -255,5 +259,17 @@ antigravity
 具身智能
 机械臂
 协作机器人
+@4
 
 
+# ═══════════════════════════════════════════════════════════════
+#                         社会地缘
+# ═══════════════════════════════════════════════════════════════
+
+[国际局势]
+伊朗
+以色列
+美国
+日本
+战争
+俄乌冲突
