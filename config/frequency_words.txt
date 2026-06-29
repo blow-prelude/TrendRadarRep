@@ -251,7 +251,15 @@ kimi
 DeepSeek
 @10
 
-
+[linux]
+linux
+embedded linux
+设备树
+uboot
+BSP
+内核裁剪
+内核驱动
+@4
 
 [机器人]
 机器人
@@ -273,3 +281,4 @@ DeepSeek
 日本
 战争
 俄乌冲突
+@7
