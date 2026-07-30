@@ -38,7 +38,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true # 是否启用调度系统
-  preset: "night_owl" # 预设模板名称（见上方说明）
+  preset: "office_hours" # 预设模板名称（见上方说明）
 
 # ===============================================================
 # 2. 数据源 - 热榜平台
@@ -54,8 +54,6 @@ platforms:
     # === 综合新闻媒体类 ===
     - id: "toutiao"
       name: "今日头条"
-    - id: "baidu"
-      name: "百度热搜"
     - id: "thepaper"
       name: "澎湃新闻"
     - id: "ifeng"
@@ -64,10 +62,6 @@ platforms:
     # === 财经投资类 ===
     - id: "wallstreetcn-hot"
       name: "华尔街见闻 最热"
-    - id: "wallstreetcn-quick"
-      name: "华尔街见闻 快讯"
-    - id: "wallstreetcn-news"
-      name: "华尔街见闻 最新"
     - id: "gelonghui"
       name: "格隆汇"
     - id: "xueqiu"
@@ -78,8 +72,6 @@ platforms:
     # === 社交/短视频/娱乐类 ===
     - id: "weibo"
       name: "微博"
-    - id: "douyin"
-      name: "抖音"
     - id: "bilibili-hot-search"
       name: "bilibili 热搜"
     - id: "tieba"
@@ -151,17 +143,17 @@ rss:
       enabled: true
       max_age_days: 1 # 示例：只推送1天内的文章
 
-    - id: "cnbc"
-      name: "US Top News and Analysis"
-      url: "https://www.cnbc.com/rss-feeds/"
-      enabled: true
-      max_age_days: 1 # 示例：只推送1天内的文章
+    # - id: "cnbc"
+    #   name: "US Top News and Analysis"
+    #   url: "https://www.cnbc.com/rss-feeds/"
+    #   enabled: true
+    #   max_age_days: 1 # 示例：只推送1天内的文章
 
-    - id: "new on japan"
-      name: "New on Japan 日本新闻"
-      url: “http://www.newsonjapan.com/rss/top.xml”
-      enabled: true
-      max_age_days: 1 # 示例：只推送1天内的文章
+    # - id: "new on japan"
+    #   name: "New on Japan 日本新闻"
+    #   url: “http://www.newsonjapan.com/rss/top.xml”
+    #   enabled: true
+    #   max_age_days: 1 # 示例：只推送1天内的文章
 
     - id: "cnn"
       name: "cnn"
